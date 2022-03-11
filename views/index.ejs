@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <% if (messages.length > 0) { %>
+     <% messages.forEach(element => { %>
+        <p class="text"><%= element.text%> </p>
+        <p class="user"><%= element.user%></p>
+        <div class="added"><%= element.added%></div> 
+     <% }) %>
+    <% } %>
+    <a href="/newEntry"><button type="button">Add New</button></a>
+  </body>
+</html>
