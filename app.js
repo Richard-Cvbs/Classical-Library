@@ -7,8 +7,10 @@ const mongoose = require('mongoose');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const coolRouter = require('./routes/cool');
-const newEntry = require('./routes/newEntry');
+const aboutRouter = require('./routes/about');
+const newEntryRouter = require('./routes/newEntry');
+const wiki = require('./routes/wiki');
+const catalog = require('./routes/catalog');
 
 const User = require('./User');
 
@@ -29,16 +31,20 @@ async function run() {
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+// misc
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// routes
 app.use('/', indexRouter);
 app.use('/newEntry', indexRouter);
 app.use('/users', usersRouter);
-app.use('/users/cool', coolRouter);
+app.use('/about', newEntryRouter);
+app.use('/wiki', wiki);
+app.use('/catalog', catalog);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
