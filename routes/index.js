@@ -21,6 +21,9 @@ const messages = [
 router.get('/index', (req, res, next) => {
   res.render('index', { title: 'Mini Messageboard', messages });
 });
+router.get('/', (req, res, next) => {
+  res.render('index', { title: 'Mini Messageboard', messages });
+});
 
 router.post('/newEntry', (req, res, next) => {
   const obj = {
