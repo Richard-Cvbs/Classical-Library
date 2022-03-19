@@ -28,11 +28,18 @@
             </ul>
         </div>
         <div class="col-sm-10">
-          <p>There are <%= data.book_count %> titles in total</p>
-          <p>There are <%= data.book_instance_count %> individual books in total</p>
-          <p>From which <%= data.book_instance_available_count %> are currently available</p>
-          <p>From <%= data.author_count %> different authors</p>
-          <p>Expanding <%= data.genre_count %> different genres</p>
+            <ul>
+                <% if (book_list.length == 0) { %>
+                 <li>There are no books at this time</li>
+                <% } else { %>
+                <% book_list.forEach(book => { %>
+                    <li>
+                        <a href="<%= book.url %>"><%= book.title %></a> 
+                        |  <%= book.author.name %> 
+                    </li>
+                  <% }) %>
+                  <% } %> 
+            </ul>
         </div>
     </div>
 </div>

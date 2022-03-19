@@ -7,9 +7,6 @@ const mongoose = require('mongoose');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const aboutRouter = require('./routes/about');
-const newEntryRouter = require('./routes/newEntry');
-const wiki = require('./routes/wiki');
 const catalog = require('./routes/catalog');
 
 const User = require('./User');
@@ -17,16 +14,11 @@ const User = require('./User');
 const app = express();
 
 // Set up mongoose
-mongoose.connect('mongodb+srv://m001-student:m001-mongodb-basics@cluster0.qyah1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', () => {
+const mongodb = 'mongodb+srv://m001-student:m001-mongodb-basics@cluster0.qyah1.mongodb.net/personalLibrary?retryWrites=true&w=majority';
+mongoose.connect(mongodb, () => {
   console.log('connected');
 });
 
-async function run() {
-  const user = new User({ name: 'Richard', age: 25 });
-  await user.save();
-  console.log(user);
-}
-// run();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -40,10 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // routes
 app.use('/', indexRouter);
-app.use('/newEntry', indexRouter);
 app.use('/users', usersRouter);
-app.use('/about', newEntryRouter);
-app.use('/wiki', wiki);
 app.use('/catalog', catalog);
 
 // catch 404 and forward to error handler
