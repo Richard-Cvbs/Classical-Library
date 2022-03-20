@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
 const async = require('async');
+
 const Book = require('../models/book');
 const Author = require('../models/author');
 const Genre = require('../models/genre');
@@ -23,7 +23,9 @@ exports.index = function (req, res) {
       Genre.countDocuments({}, callback);
     },
   }, (err, results) => {
-    res.render('index', { title: 'Local Library Home', error: err, data: results });
+    if (err) console.log(err);
+    console.log(results)
+    res.json(results);
   });
 };
 
