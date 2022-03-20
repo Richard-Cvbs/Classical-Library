@@ -4,29 +4,7 @@ import '/node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../App.css';
 import MyNavBar from '../components/MyNav';
 
-function App() {
-  const [titles, setTitles] = useState(0)
-  const [authors, setAuthors] = useState(0)
-  const [generes, setGeneres] = useState(0)
-  const [individualBooks, setIndividualBooks] = useState(0)
-  const [availableBooks, SetAvailableBooks] = useState(0)
-
-  useEffect(() =>{
-    fetch('/api/')
-    .then(res => {
-      console.log(res)
-      return res.json()
-    })
-    .then(
-      (result) => {
-        setTitles(result.book_count);
-        setAuthors(result.author_count);
-        setGeneres(result.genre_count);
-        setIndividualBooks(result.book_instance_count);
-        SetAvailableBooks(result.book_instance_available_count);
-      }
-    )
-  },[])
+function Books() {
   return (
     <div className="container-fluid">
        <MyNavBar></MyNavBar>
@@ -48,15 +26,15 @@ function App() {
             </ul>
         </div>
         <div className="col-sm-10">
-          <p>There are {titles} titles in total</p>
-          <p>From {authors} different authors</p>
-          <p>Expanding {generes} different genres</p>
-          <p>There are {individualBooks} individual books in total</p>
-          <p>From which {availableBooks} are currently available</p>
+          <p>There are {0} titles in total</p>
+          <p>From {0} different authors</p>
+          <p>Expanding {0} different genres</p>
+          <p>There are {0} individual books in total</p>
+          <p>From which {0} are currently available</p>
         </div>
     </div>
 </div>
   );
 }
 
-export default App;
+export default Books;
