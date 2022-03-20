@@ -35,7 +35,9 @@ exports.get_all_books = function (req, res) {
       Book.countDocuments({}, callback);
     },
     all_book_details(callback) {
-      Book.countDocuments({}, callback);
+      Book.find({}, callback)
+      .populate('author')
+      .populate('genre')
     }
   }, (err, results) => {
     if (err) console.log(err);

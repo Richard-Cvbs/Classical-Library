@@ -18,6 +18,7 @@ function Books() {
         })
         .then(
           (result) => {
+            console.log(result)
             setTitles(result.book_count);
             setAllTitles(result.all_book_details);
           }
