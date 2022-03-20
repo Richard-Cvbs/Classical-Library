@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
+import { Link } from 'react-router-dom';
+import '/node_modules/bootstrap/dist/css/bootstrap.min.css'
+import '../App.css';
 
-import './App.css';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 function App() {
   const [titles, setTitles] = useState(0)
   const [authors, setAuthors] = useState(0)
@@ -24,8 +25,7 @@ function App() {
         SetAvailableBooks(result.book_instance_available_count);
       }
     )
-  }
-  )
+  },[])
   return (
     <div className="container-fluid">
     <div className="row">
