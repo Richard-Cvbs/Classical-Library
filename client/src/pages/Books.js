@@ -1,40 +1,49 @@
 import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
+import {ListGroup, Container, Card} from 'react-bootstrap';
+
 import '/node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../App.css';
 import MyNavBar from '../components/MyNav';
+import MyFooter from '../components/MyFooter'
 
 function Books() {
-  return (
-    <div className="container-fluid">
-       <MyNavBar></MyNavBar>
-    <div className="row">
-        <div className="col-sm-2">
-            <ul className="sidebar-nav">
-                <li><a href="/catalog">Home</a></li>
-                <li><a href="/catalog/books">All books</a></li>
-                <li><a href="/catalog/authors">All authors</a></li>
-                <li><a href="/catalog/genres">All genres</a></li>
-                <li><a href="/catalog/bookinstances">All book-instances</a></li>
-                <li>
-                    <hr/>
-                </li>
-                <li><a href="/catalog/author/create">Create new author</a></li>
-                <li><a href="/catalog/genre/create">Create new genre</a></li>
-                <li><a href="/catalog/book/create">Create new book</a></li>
-                <li><a href="/catalog/bookinstance/create">Create new book instance (copy)</a></li>
-            </ul>
-        </div>
-        <div className="col-sm-10">
-          <p>There are {0} titles in total</p>
-          <p>From {0} different authors</p>
-          <p>Expanding {0} different genres</p>
-          <p>There are {0} individual books in total</p>
-          <p>From which {0} are currently available</p>
-        </div>
-    </div>
-</div>
-  );
+      const [titles, setTitles] = useState(0)
+      const [allTitles, setAllTitles] = useState([])
+    
+      useEffect(() =>{
+        fetch('/api/books/')
+        .then(res => {
+          return res.json()
+        })
+        .then(
+          (result) => {
+            setTitles(result.book_count);
+            setAllTitles(result.all_book_details);
+          }
+        )
+      },[])
+      return (
+      <Container>
+           <MyNavBar/>
+        <Container>
+            <ListGroup>
+            <ListGroup.Item className='text-center p-3 lead' variant="primary">There are {titles} titles in total</ListGroup.Item>
+            </ListGroup>
+            <Card>
+              <Card.Body>
+                <Card.Title>Card Title</Card.Title>
+                <Card.Title>Card Title</Card.Title>
+                <Card.Text>
+                Some quick example text to build on the card title and make up the bulk of
+                the card's content.
+                </Card.Text>
+              </Card.Body>
+            </Card>
+        </Container>
+        <MyFooter />
+    </Container>
+      );
 }
 
 export default Books;

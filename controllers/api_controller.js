@@ -28,3 +28,17 @@ exports.index = function (req, res) {
       res.json(results);
     });
   };
+
+exports.get_all_books = function (req, res) {
+  async.parallel({
+    book_count(callback) {
+      Book.countDocuments({}, callback);
+    },
+    all_book_details(callback) {
+      Book.countDocuments({}, callback);
+    }
+  }, (err, results) => {
+    if (err) console.log(err);
+    res.json(results);
+  });
+};

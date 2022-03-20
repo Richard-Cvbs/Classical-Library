@@ -1,8 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
+import {ListGroup, Container} from 'react-bootstrap';
+
 import '/node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../App.css';
+
 import MyNavBar from '../components/MyNav';
+import MyFooter from '../components/MyFooter';
 
 function App() {
   const [titles, setTitles] = useState(0)
@@ -14,7 +18,6 @@ function App() {
   useEffect(() =>{
     fetch('/api/')
     .then(res => {
-      console.log(res)
       return res.json()
     })
     .then(
@@ -28,34 +31,19 @@ function App() {
     )
   },[])
   return (
-    <div className="container-fluid">
-       <MyNavBar></MyNavBar>
-    <div className="row">
-        <div className="col-sm-2">
-            <ul className="sidebar-nav">
-                <li><a href="/catalog">Home</a></li>
-                <li><a href="/catalog/books">All books</a></li>
-                <li><a href="/catalog/authors">All authors</a></li>
-                <li><a href="/catalog/genres">All genres</a></li>
-                <li><a href="/catalog/bookinstances">All book-instances</a></li>
-                <li>
-                    <hr/>
-                </li>
-                <li><a href="/catalog/author/create">Create new author</a></li>
-                <li><a href="/catalog/genre/create">Create new genre</a></li>
-                <li><a href="/catalog/book/create">Create new book</a></li>
-                <li><a href="/catalog/bookinstance/create">Create new book instance (copy)</a></li>
-            </ul>
-        </div>
-        <div className="col-sm-10">
-          <p>There are {titles} titles in total</p>
-          <p>From {authors} different authors</p>
-          <p>Expanding {generes} different genres</p>
-          <p>There are {individualBooks} individual books in total</p>
-          <p>From which {availableBooks} are currently available</p>
-        </div>
-    </div>
-</div>
+  <Container>
+       <MyNavBar/>
+    <Container>
+        <ListGroup>
+        <ListGroup.Item className='text-center p-3 lead' variant="primary">There are {titles} titles in total</ListGroup.Item>
+        <ListGroup.Item className='text-center p-3 lead' variant="secondary">From {authors} different authors</ListGroup.Item>
+        <ListGroup.Item className='text-center p-3 lead' variant="success"> Expanding {generes} different genres</ListGroup.Item>
+        <ListGroup.Item className='text-center p-3 lead' variant="danger">There are {individualBooks} individual books in total</ListGroup.Item>
+        <ListGroup.Item className='text-center p-3 lead' variant="warning">From which {availableBooks} are currently available</ListGroup.Item>
+        </ListGroup>
+    </Container>
+    <MyFooter />
+</Container>
   );
 }
 
