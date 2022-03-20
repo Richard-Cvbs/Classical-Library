@@ -18,7 +18,7 @@ function Books() {
         })
         .then(
           (result) => {
-            console.log(result)
+            console.log(result.all_book_details)
             setTitles(result.book_count);
             setAllTitles(result.all_book_details);
           }
@@ -31,16 +31,23 @@ function Books() {
             <ListGroup>
             <ListGroup.Item className='text-center p-3 lead' variant="primary">There are {titles} titles in total</ListGroup.Item>
             </ListGroup>
-            <Card>
+        </Container>
+        <Container>
+          {allTitles.map((book)=>{
+            return(
+            <Card key={book._id}>
               <Card.Body>
-                <Card.Title>Card Title</Card.Title>
-                <Card.Title>Card Title</Card.Title>
+                <Card.Title>{book.title}</Card.Title>
+                <Card.Title>by {book.author.first_name + ' ' + book.author.family_name}</Card.Title>
                 <Card.Text>
-                Some quick example text to build on the card title and make up the bulk of
-                the card's content.
+                {book.summary}
                 </Card.Text>
+                <Card.Text>{book.genre[0].name}</Card.Text>
               </Card.Body>
             </Card>
+            )
+          })}
+            
         </Container>
         <MyFooter />
     </Container>

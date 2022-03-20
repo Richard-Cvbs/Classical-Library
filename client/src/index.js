@@ -5,15 +5,18 @@ import './index.css';
 import App from './pages/App';
 import Books from './pages/Books';
 import reportWebVitals from './reportWebVitals';
+import ErrorBoundary from './components/ErrorBoundary'
 
 ReactDOM.render(
   <React.StrictMode>
+    <ErrorBoundary>
     <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="/books" element={<Books />} />
     </Routes>
     </BrowserRouter>
+    </ErrorBoundary>
   </React.StrictMode>,
   document.getElementById('root')
 );
