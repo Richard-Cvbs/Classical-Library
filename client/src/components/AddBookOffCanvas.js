@@ -8,7 +8,7 @@ function AddBookOffCanvas({ show, handleClose, ...props }) {
   const [title, setTitle] = useState('')
   const [author, setAuthor] = useState('')
   const [summary, setSummary] = useState('')
-  const [genre, setGenre] = useState('Fantasy')
+  const [genre, setGenre] = useState('622b6a3b99106c4228f021d9')
   const [quantity, setQuantity] = useState('1')
 
 
@@ -33,9 +33,19 @@ function AddBookOffCanvas({ show, handleClose, ...props }) {
     setQuantity(e.target.value)
   }
   function handleSubmit(e){
-    console.log({title, author, summary, genre,quantity});
-  }
-  
+    e.preventDefault()
+    fetch(('/api/addbook'),{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body:JSON.stringify({title, author, summary, genre, quantity}),
+    })}
+    function handleSubmitGET(e){
+      e.preventDefault()
+      fetch(('/api/addbook'),{
+        method: 'GET',
+      })}
     return (
         <Offcanvas show={show} onHide={handleClose} {...props}>
           <Offcanvas.Header closeButton>
@@ -67,9 +77,9 @@ function AddBookOffCanvas({ show, handleClose, ...props }) {
             <Form.Group className="mb-3" controlId="pickGenre">
             <Form.Label className='ms-2 lead'>Pick Genre</Form.Label>
             <Form.Select value={genre} onChange={handleGenre} aria-label="Default">
-                <option value="Fantasy">Fantasy</option>
-                <option value="Science Fiction">Science Fiction</option>
-                <option value="French Poetry">French Poetry</option>
+                <option value="622b6a3b99106c4228f021d9">Fantasy</option>
+                <option value="622b6a3c99106c4228f021db">Science Fiction</option>
+                <option value="622b6a3c99106c4228f021dd">French Poetry</option>
             </Form.Select>
             </Form.Group>
             <Form.Group className="mb-3" controlId="pickGenre">

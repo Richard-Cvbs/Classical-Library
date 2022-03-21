@@ -17,6 +17,9 @@ mongoose.connect(mongodb, () => {
   console.log('connected');
 });
 
+//view engine
+app.set("view engine", "ejs");
+
 // misc
 app.use(logger('dev'));
 app.use(express.json());
