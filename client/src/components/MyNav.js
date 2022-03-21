@@ -5,13 +5,24 @@ import '/node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '/node_modules/bootstrap-icons/font/bootstrap-icons.css'
 
 import AddBookOffCanvas from './AddBookOffCanvas'
+import ReturnOffCanvas from "./ReturnOffCanvas";
+import BorrowOffCanvas from "./BorrowOffCanvas";
 
 function MyNavBar(){
-    const [show, setShow] = useState(false);
+    const [showAdd, setShowAdd] = useState(false);
+    const [showBorrow, setShowBorrow] = useState(false);
+    const [showReturn, setShowReturn] = useState(false);
+
   
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleCloseAdd = () => setShowAdd(false);
+    const handleShowAdd = () => setShowAdd(true);
     
+    const handleCloseBorrow = () => setShowBorrow(false);
+    const handleShowBorrow = () => setShowBorrow(true);
+
+    const handleCloseReturn = () => setShowReturn(false);
+    const handleShowReturn = () => setShowReturn(true);
+
 return (
 <Navbar bg="light" expand="lg">
 <Container>
@@ -26,13 +37,15 @@ return (
             Home</Nav.Link>
         <Nav.Link as={Link} to='/books' className='lead'>See All Titles</Nav.Link>
         <NavDropdown className='lead' title="Borrow and Return" id="basic-nav-dropdown">
-        <NavDropdown.Item onClick={handleShow} as={Button} className='text-center' href="#">Add a New Book</NavDropdown.Item>
-        <NavDropdown.Item as={Button} className='text-center' href="#action/3.2">Borrow A Book</NavDropdown.Item>
-        <NavDropdown.Item className='text-center' href="#action/3.3">Return A Book</NavDropdown.Item>
+        <NavDropdown.Item onClick={handleShowAdd} as={Button} className='text-center' href="#">Add a New Book</NavDropdown.Item>
+        <NavDropdown.Item onClick={handleShowBorrow} as={Button} className='text-center' href="#">Borrow A Book</NavDropdown.Item>
+        <NavDropdown.Item onClick={handleShowReturn} className='text-center' href="#action/3.3">Return A Book</NavDropdown.Item>
         </NavDropdown>
     </Nav>
     </Navbar.Collapse>
-    <AddBookOffCanvas placement='end' show={show} handleClose={handleClose}/>
+    <AddBookOffCanvas placement='end' show={showAdd} handleClose={handleCloseAdd}/>
+    <ReturnOffCanvas placement='end' show={showReturn} handleClose={handleCloseReturn}/>
+    <BorrowOffCanvas placement='end' show={showBorrow} handleClose={handleCloseBorrow}/>
 </Container>
 </Navbar>
 )
