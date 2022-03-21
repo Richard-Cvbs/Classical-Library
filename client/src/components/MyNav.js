@@ -1,10 +1,17 @@
-import React from "react";
-import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
+import React, {useState} from "react";
+import { Navbar, Container, Nav, NavDropdown, Button } from "react-bootstrap";
 import {Link} from 'react-router-dom'
 import '/node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '/node_modules/bootstrap-icons/font/bootstrap-icons.css'
 
+import AddBookOffCanvas from './AddBookOffCanvas'
+
 function MyNavBar(){
+    const [show, setShow] = useState(false);
+  
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    
 return (
 <Navbar bg="light" expand="lg">
 <Container>
@@ -19,12 +26,13 @@ return (
             Home</Nav.Link>
         <Nav.Link as={Link} to='/books' className='lead'>See All Titles</Nav.Link>
         <NavDropdown className='lead' title="Borrow and Return" id="basic-nav-dropdown">
-        <NavDropdown.Item className='text-center' href="#action/3.1">Add a New Book</NavDropdown.Item>
-        <NavDropdown.Item className='text-center' href="#action/3.2">Borrow A Book</NavDropdown.Item>
+        <NavDropdown.Item onClick={handleShow} as={Button} className='text-center' href="#">Add a New Book</NavDropdown.Item>
+        <NavDropdown.Item as={Button} className='text-center' href="#action/3.2">Borrow A Book</NavDropdown.Item>
         <NavDropdown.Item className='text-center' href="#action/3.3">Return A Book</NavDropdown.Item>
         </NavDropdown>
     </Nav>
     </Navbar.Collapse>
+    <AddBookOffCanvas placement='end' show={show} handleClose={handleClose}/>
 </Container>
 </Navbar>
 )

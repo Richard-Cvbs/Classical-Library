@@ -7,6 +7,7 @@ import '../App.css';
 
 import MyNavBar from '../components/MyNav';
 import MyFooter from '../components/MyFooter';
+import AddBookOffCanvas from '../components/AddBookOffCanvas'
 
 function App() {
   const [titles, setTitles] = useState(0)
@@ -42,6 +43,7 @@ function App() {
         <ListGroup.Item className='text-center p-3 lead' variant="warning">From which {availableBooks} are currently available</ListGroup.Item>
         </ListGroup>
     </Container>
+
     <MyFooter />
 </Container>
   );

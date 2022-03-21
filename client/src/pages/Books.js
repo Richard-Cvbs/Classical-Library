@@ -47,7 +47,6 @@ function Books() {
             </Card>
             )
           })}
-            
         </Container>
         <MyFooter />
     </Container>
