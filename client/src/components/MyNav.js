@@ -37,9 +37,9 @@ return (
             Home</Nav.Link>
         <Nav.Link as={Link} to='/books' className='lead'>See All Titles</Nav.Link>
         <NavDropdown className='lead' title="Borrow and Return" id="basic-nav-dropdown">
-        <NavDropdown.Item onClick={handleShowAdd} as={Button} className='text-center' href="#">Add a New Book</NavDropdown.Item>
-        <NavDropdown.Item onClick={handleShowBorrow} as={Button} className='text-center' href="#">Borrow A Book</NavDropdown.Item>
-        <NavDropdown.Item onClick={handleShowReturn} className='text-center' href="#action/3.3">Return A Book</NavDropdown.Item>
+        <NavDropdown.Item onClick={handleShowAdd} as={Button} className='text-center'>Add a New Book</NavDropdown.Item>
+        <NavDropdown.Item onClick={handleShowBorrow} as={Button} className='text-center'>Borrow A Book</NavDropdown.Item>
+        <NavDropdown.Item onClick={handleShowReturn} as={Button} className='text-center'>Return A Book</NavDropdown.Item>
         </NavDropdown>
     </Nav>
     </Navbar.Collapse>
