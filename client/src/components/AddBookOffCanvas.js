@@ -36,6 +36,29 @@ function AddBookOffCanvas({ show, handleClose, ...props }) {
                   Please enter a quick summary.
                </Form.Text>
              </Form.Group>
+            <Form.Group className="mb-3" controlId="pickGenre">
+            <Form.Label className='ms-2 lead'>Pick Genre</Form.Label>
+            <Form.Select aria-label="Default">
+                <option value="Fantasy">Fantasy</option>
+                <option value="Science Fiction">Science Fiction</option>
+                <option value="French Poetry">French Poetry</option>
+            </Form.Select>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="pickGenre">
+            <Form.Label className='ms-2 lead'>How many will you Add?</Form.Label>
+            <Form.Select aria-label="Default">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </Form.Select>
+            </Form.Group>
+            <Form.Group className='d-flex justify-content-center'>
+            <Button variant="success" type="submit">
+             Submit
+            </Button>
+            </Form.Group>
           </Form>
           </Offcanvas.Body>
         </Offcanvas>
