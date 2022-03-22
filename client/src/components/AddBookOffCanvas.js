@@ -12,19 +12,15 @@ function AddBookOffCanvas({ show, handleClose, ...props }) {
 
 
   function handleTitle(e){
-    console.log(e.target.value)
     setTitle(e.target.value)
   }
   function handleAuthor(e){
-    console.log(e.target.value)
     setAuthor(e.target.value)
   }
   function handleSummary(e){
-    console.log(e.target.value)
     setSummary(e.target.value)
   }
   function handleGenre(e){
-    console.log(e.target.value)
     setGenre(e.target.value)
   }
 

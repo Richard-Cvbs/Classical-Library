@@ -14,7 +14,6 @@ function ReturnOffCanvas({ show, handleClose, ...props }) {
     })
     .then(
       (result) => {
-        console.log(result)
         setUnAvailable(result)
       }
     )

@@ -14,7 +14,6 @@ function BorrowOffCanvas({ show, handleClose, ...props }) {
     })
     .then(
       (result) => {
-        console.log(result)
         setAvaliable(result)
       }
     )
