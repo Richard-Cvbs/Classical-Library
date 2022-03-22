@@ -9,7 +9,6 @@ function AddBookOffCanvas({ show, handleClose, ...props }) {
   const [author, setAuthor] = useState('')
   const [summary, setSummary] = useState('')
   const [genre, setGenre] = useState('622b6a3b99106c4228f021d9')
-  const [quantity, setQuantity] = useState('1')
 
 
   function handleTitle(e){
@@ -28,10 +27,7 @@ function AddBookOffCanvas({ show, handleClose, ...props }) {
     console.log(e.target.value)
     setGenre(e.target.value)
   }
-  function handleQuantity(e){
-    console.log(e.target.value)
-    setQuantity(e.target.value)
-  }
+
   function handleSubmit(e){
     e.preventDefault()
     fetch(('/api/addbook'),{
@@ -39,13 +35,9 @@ function AddBookOffCanvas({ show, handleClose, ...props }) {
       headers: {
         'Content-Type': 'application/json',
       },
-      body:JSON.stringify({title, author, summary, genre, quantity}),
+      body:JSON.stringify({title, author, summary, genre}),
     })}
-    function handleSubmitGET(e){
-      e.preventDefault()
-      fetch(('/api/addbook'),{
-        method: 'GET',
-      })}
+
     return (
         <Offcanvas show={show} onHide={handleClose} {...props}>
           <Offcanvas.Header closeButton>
@@ -80,16 +72,6 @@ function AddBookOffCanvas({ show, handleClose, ...props }) {
                 <option value="622b6a3b99106c4228f021d9">Fantasy</option>
                 <option value="622b6a3c99106c4228f021db">Science Fiction</option>
                 <option value="622b6a3c99106c4228f021dd">French Poetry</option>
-            </Form.Select>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="pickGenre">
-            <Form.Label className='ms-2 lead'>How many will you Add?</Form.Label>
-            <Form.Select value={quantity} onChange={handleQuantity} aria-label="Default">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
             </Form.Select>
             </Form.Group>
             <Form.Group className='d-flex justify-content-center'>

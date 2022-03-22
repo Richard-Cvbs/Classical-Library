@@ -11,7 +11,9 @@ router.get('/books/', api_controller.get_all_books);
 
 router.post('/addbook/', api_controller.post_new_book);
 
-router.get('/addbook/', api_controller.get_new_book);
+router.get('/bookinstances/', api_controller.get_book_instances);
+
+router.get('/nonavailbookinstances/', api_controller.get_nonavail_instances);
 
 
 module.exports = router;

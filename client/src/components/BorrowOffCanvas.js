@@ -1,12 +1,24 @@
-import React, {useState} from 'react'
-import {Offcanvas, Button, FormControl, Form} from 'react-bootstrap'
+import React, {useState, useEffect} from 'react'
+import {Offcanvas, Button, Form} from 'react-bootstrap'
 
 import '/node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 
 function BorrowOffCanvas({ show, handleClose, ...props }) {
-
+  const [available, setAvaliable] = useState(null)
   
+  useEffect(() =>{
+    fetch('/api/bookinstances/')
+    .then(res => {
+      return res.json()
+    })
+    .then(
+      (result) => {
+        console.log(result)
+        setAvaliable(result)
+      }
+    )
+  },[])
     return (
       <>
         <Offcanvas show={show} onHide={handleClose} {...props}>
@@ -18,11 +30,16 @@ function BorrowOffCanvas({ show, handleClose, ...props }) {
             <Form.Group className="mb-3" controlId="pickGenre">
             <Form.Label className='ms-2 lead'>Which Title would you like to borrow?</Form.Label>
             <Form.Select aria-label="Default">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
+              {available !== null &&
+              available.map( item=>{
+                return ( 
+                  <option value={item._id._id} key={item._id._id}>
+                  {item._id.title}
+                  </option>
+                  )
+                }
+              )
+              }
             </Form.Select>
             </Form.Group>
             <Form.Group className='d-flex justify-content-center'>
