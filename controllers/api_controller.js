@@ -72,7 +72,6 @@ exports.post_new_book = function (req, res){
     },
   ], (err, results) => {
     if (err) console.log(err);
-    console.log(results)
   });
   res.end()
 }
@@ -107,7 +106,6 @@ exports.get_nonavail_instances = function (req, res){
     }
   ], (err, results) => {
     if (err) console.log(err);
-    console.log(results)
     res.json(results);
   })
 }
