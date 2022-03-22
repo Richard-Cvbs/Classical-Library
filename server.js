@@ -12,16 +12,23 @@ const apiRouter = require('./routes/api')
 
 const User = require('./User');
 
-let s3 = new aws.S3({
+const s3 = new aws.S3({
+  // eslint-disable-next-line no-undef
   MONGODB_USERNAME: process.env.S3_KEY,
+  // eslint-disable-next-line no-undef
   MONGODB_PASS: process.env.S3_SECRET
 });
+console.log(
+  // eslint-disable-next-line no-undef
+  process.env
+)
 // Set up mongoose
 console.log(s3.MONGODB_USERNAME, s3.MONGODB_PASS)
 const mongodb = `mongodb+srv://${s3.MONGODB_USERNAME}:${s3.MONGODB_PASS}@cluster0.qyah1.mongodb.net/personalLibrary?retryWrites=true&w=majority`;
 mongoose.connect(mongodb, () => {
   console.log('connected');
 });
+
 
 
 
