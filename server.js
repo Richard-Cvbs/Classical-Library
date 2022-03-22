@@ -4,7 +4,6 @@ const path  = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
-const aws = require('aws-sdk');
 
 const app = express();
 
@@ -12,19 +11,19 @@ const apiRouter = require('./routes/api')
 
 const User = require('./User');
 
-const s3 = new aws.S3({
+const SECRET = {
   // eslint-disable-next-line no-undef
   MONGODB_USERNAME: process.env.S3_KEY,
   // eslint-disable-next-line no-undef
   MONGODB_PASS: process.env.S3_SECRET
-});
+};
 console.log(
   // eslint-disable-next-line no-undef
   process.env
 )
 // Set up mongoose
-console.log(s3.MONGODB_USERNAME, s3.MONGODB_PASS)
-const mongodb = `mongodb+srv://${s3.MONGODB_USERNAME}:${s3.MONGODB_PASS}@cluster0.qyah1.mongodb.net/personalLibrary?retryWrites=true&w=majority`;
+console.log(SECRET.MONGODB_USERNAME, SECRET.MONGODB_PASS)
+const mongodb = `mongodb+srv://${SECRET.MONGODB_USERNAME}:${SECRET.MONGODB_PASS}@cluster0.qyah1.mongodb.net/personalLibrary?retryWrites=true&w=majority`;
 mongoose.connect(mongodb, () => {
   console.log('connected');
 });
