@@ -1,5 +1,8 @@
 # Classical-Library
 
-Library built with Node.js (Express), React and React-Bootstrap, stores and retrieves information from a MongoDB database using Mongoose.
+Add, Borrow and Return Books in a library Registry.<br>
+<br>
+Front End Built with React and React-Boostrap.<br>
+Back-End Built with Node.js, Express, MongoDB/Mongoose.<br>
 
 Look at the deployed app in heroku at <link>https://classical-library.herokuapp.com/</link>
