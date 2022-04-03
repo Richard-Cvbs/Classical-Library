@@ -25,14 +25,16 @@ function AddBookOffCanvas({ show, handleClose, ...props }) {
   }
 
   function handleSubmit(e){
-    e.preventDefault()
+    e.preventDefault();
     fetch(('/api/addbook'),{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body:JSON.stringify({title, author, summary, genre}),
-    })}
+    })
+    handleClose();
+  }
 
     return (
         <Offcanvas show={show} onHide={handleClose} {...props}>

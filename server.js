@@ -16,13 +16,14 @@ const SECRET = {
   MONGODB_USERNAME: process.env.S3_KEY,
   // eslint-disable-next-line no-undef
   MONGODB_PASS: process.env.S3_SECRET
+
 };
 console.log(
   // eslint-disable-next-line no-undef
-  process.env
+  // process.env
 )
 // Set up mongoose
-console.log(SECRET.MONGODB_USERNAME, SECRET.MONGODB_PASS)
+// console.log(SECRET.MONGODB_USERNAME, SECRET.MONGODB_PASS)
 const mongodb = `mongodb+srv://${SECRET.MONGODB_USERNAME}:${SECRET.MONGODB_PASS}@cluster0.qyah1.mongodb.net/personalLibrary?retryWrites=true&w=majority`;
 mongoose.connect(mongodb, () => {
   console.log('connected');
